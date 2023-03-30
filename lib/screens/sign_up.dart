@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:login_ui/screens/login.dart';
+import 'package:login_ui/utils/app_layout.dart';
 
 class SignUp extends StatelessWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -12,15 +13,19 @@ class SignUp extends StatelessWidget {
       backgroundColor: Colors.grey.shade700,
       body: Center(
         child: Container(
-          height: MediaQuery.of(context).size.height * 0.7,
-          margin: const EdgeInsets.symmetric(horizontal: 30),
+          height: MediaQuery.of(context).size.height * 0.9,
+          width: MediaQuery.of(context).size.width * 0.3,
+          margin: EdgeInsets.symmetric(horizontal: AppLayout.getWidth(20)),
           decoration: BoxDecoration(
             color: Colors.grey.shade300,
-            borderRadius: const BorderRadius.all(
-              Radius.circular(20),
+            borderRadius: BorderRadius.all(
+              Radius.circular(AppLayout.getHeight(20)),
             ),
           ),
-          padding: const EdgeInsets.all(30),
+          padding: EdgeInsets.symmetric(
+            horizontal: AppLayout.getWidth(20),
+            vertical: AppLayout.getHeight(20),
+          ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -28,14 +33,16 @@ class SignUp extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  const Text(
+                  Text(
                     'Sign Up',
                     style: TextStyle(
-                      fontSize: 30,
+                      fontSize: AppLayout.getHeight(20),
                       fontWeight: FontWeight.bold,
                       color: Colors.transparent,
                       shadows: [
-                        Shadow(offset: Offset(0, -15), color: Colors.black)
+                        Shadow(
+                            offset: Offset(0, AppLayout.getHeight(-15)),
+                            color: Colors.black)
                       ],
                       decoration: TextDecoration.underline,
                       decorationThickness: 3,
@@ -47,42 +54,48 @@ class SignUp extends StatelessWidget {
                       //redirect to login screen
                       Navigator.pushNamed(context, Login.id);
                     },
-                    child: const Text(
+                    child: Text(
                       'Login',
                       style: TextStyle(
-                        fontSize: 30,
+                        fontSize: AppLayout.getHeight(20),
                         fontWeight: FontWeight.bold,
                         color: Colors.transparent,
                         shadows: [
-                          Shadow(offset: Offset(0, -15), color: Colors.black)
+                          Shadow(
+                              offset: Offset(0, AppLayout.getHeight(-15)),
+                              color: Colors.black)
                         ],
                       ),
                     ),
                   )
                 ],
               ),
-              const SizedBox(
-                height: 30,
+              SizedBox(
+                height: AppLayout.getHeight(10),
               ),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-                margin: const EdgeInsets.only(bottom: 3),
-                decoration: const BoxDecoration(
+                padding:
+                EdgeInsets.symmetric(horizontal: AppLayout.getWidth(5)),
+                margin: EdgeInsets.only(bottom: AppLayout.getHeight(3)),
+                decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(10),
-                    topRight: Radius.circular(10),
+                    topLeft: Radius.circular(AppLayout.getHeight(10)),
+                    topRight: Radius.circular(AppLayout.getHeight(10)),
                   ),
                 ),
                 child: SizedBox(
                   width: MediaQuery.of(context).size.width * 0.8,
                   child: TextField(
                     keyboardType: TextInputType.emailAddress,
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
                       border: InputBorder.none,
-                      hintText: 'Enter your email address',
-                      labelText: 'Email',
-                      prefixIcon: Icon(Icons.email),
+                      hintText: 'Enter your first name',
+                      labelText: 'First name',
+                      hintStyle: TextStyle(fontSize: AppLayout.getHeight(10)),
+                      labelStyle:
+                      TextStyle(fontSize: AppLayout.getHeight(13)),
+                      prefixIcon: Icon(Icons.person, size: AppLayout.getHeight(20),),
                     ),
                     onChanged: (value) {
                       // Do something with the user input
@@ -91,23 +104,103 @@ class SignUp extends StatelessWidget {
                 ),
               ),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                padding:
+                EdgeInsets.symmetric(horizontal: AppLayout.getWidth(5)),
+                margin: EdgeInsets.only(bottom: AppLayout.getHeight(3)),
                 decoration: const BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                    bottomRight: Radius.circular(10),
-                    bottomLeft: Radius.circular(10),
-                  ),
                 ),
                 child: SizedBox(
                   width: MediaQuery.of(context).size.width * 0.8,
                   child: TextField(
                     keyboardType: TextInputType.emailAddress,
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: 'Enter your last name',
+                      labelText: 'Last Name',
+                      hintStyle: TextStyle(fontSize: AppLayout.getHeight(10)),
+                      labelStyle:
+                      TextStyle(fontSize: AppLayout.getHeight(13)),
+                      prefixIcon: Icon(Icons.person, size: AppLayout.getHeight(20),),
+                    ),
+                    onChanged: (value) {
+                      // Do something with the user input
+                    },
+                  ),
+                ),
+              ),
+              Container(
+                padding:
+                EdgeInsets.symmetric(horizontal: AppLayout.getWidth(5)),
+                margin: EdgeInsets.only(bottom: AppLayout.getHeight(3)),
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                ),
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.8,
+                  child: TextField(
+                    keyboardType: TextInputType.emailAddress,
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: 'Enter your email',
+                      labelText: 'Email',
+                      hintStyle: TextStyle(fontSize: AppLayout.getHeight(10)),
+                      labelStyle:
+                      TextStyle(fontSize: AppLayout.getHeight(13)),
+                      prefixIcon: Icon(Icons.mail, size: AppLayout.getHeight(20),),
+                    ),
+                    onChanged: (value) {
+                      // Do something with the user input
+                    },
+                  ),
+                ),
+              ),
+              Container(
+                padding:
+                EdgeInsets.symmetric(horizontal: AppLayout.getWidth(5)),
+                margin: EdgeInsets.only(bottom: AppLayout.getHeight(3)),
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                ),
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.8,
+                  child: TextField(
+                    keyboardType: TextInputType.emailAddress,
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: 'Enter your mobile number',
+                      labelText: 'Mobile Number',
+                      hintStyle: TextStyle(fontSize: AppLayout.getHeight(10)),
+                      labelStyle:
+                      TextStyle(fontSize: AppLayout.getHeight(13)),
+                      prefixIcon: Icon(Icons.phone_android, size: AppLayout.getHeight(20),),
+                    ),
+                    onChanged: (value) {
+                      // Do something with the user input
+                    },
+                  ),
+                ),
+              ),
+              Container(
+                padding:
+                EdgeInsets.symmetric(horizontal: AppLayout.getWidth(5)),
+                margin: EdgeInsets.only(bottom: AppLayout.getHeight(3)),
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                ),
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.8,
+                  child: TextField(
+                    keyboardType: TextInputType.emailAddress,
+                    obscureText: true,
+                    decoration: InputDecoration(
                       border: InputBorder.none,
                       hintText: 'Enter your password',
                       labelText: 'Password',
-                      prefixIcon: Icon(Icons.lock),
+                      hintStyle: TextStyle(fontSize: AppLayout.getHeight(10)),
+                      labelStyle:
+                      TextStyle(fontSize: AppLayout.getHeight(13)),
+                      prefixIcon: Icon(Icons.lock, size: AppLayout.getHeight(20),),
                     ),
                     onChanged: (value) {
                       // Do something with the user input
@@ -115,76 +208,140 @@ class SignUp extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 15,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Checkbox(
-                        checkColor: Colors.black,
-                        value: false,
-                        shape: const CircleBorder(),
-                        onChanged: (bool? value) {
-                          //do something
-                        },
-                      ),
-                      const Text('Remember Me')
-                    ],
+              Container(
+                padding:
+                EdgeInsets.symmetric(horizontal: AppLayout.getWidth(5)),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    bottomRight: Radius.circular(AppLayout.getHeight(10)),
+                    bottomLeft: Radius.circular(AppLayout.getWidth(10)),
                   ),
-                  const Text('Forgot Password?')
-                ],
+                ),
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.8,
+                  child: TextField(
+                    keyboardType: TextInputType.emailAddress,
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: 'Confirm your password',
+                      labelText: 'Confirm Password',
+                      hintStyle: TextStyle(fontSize: AppLayout.getHeight(10)),
+                      labelStyle:
+                      TextStyle(fontSize: AppLayout.getHeight(13)),
+                      prefixIcon: Icon(Icons.lock, size: AppLayout.getHeight(20),),
+                    ),
+                    onChanged: (value) {
+                      // Do something with the user input
+                    },
+                  ),
+                ),
               ),
-              const SizedBox(
-                height: 15,
+              SizedBox(
+                height: AppLayout.getHeight(10),
+              ),
+              Container(
+                padding:
+                EdgeInsets.symmetric(horizontal: AppLayout.getWidth(15)),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "By clicking on Sign Up, You agree to PhyFarm's",
+                      style: TextStyle(
+                        fontSize: AppLayout.getHeight(15),
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            // redirect to Terms and Conditions Screen
+                          },
+                          child: Text(
+                            "Terms and conditions ",
+                            style: TextStyle(
+                                fontSize: AppLayout.getHeight(15),
+                                decoration: TextDecoration.underline),
+                          ),
+                        ),
+                        Text(
+                          "& ",
+                          style: TextStyle(fontSize: AppLayout.getHeight(15)),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            // redirect to PrivacyPolicy Screen
+                          },
+                          child: Text(
+                            "Privacy Policy",
+                            style: TextStyle(
+                                fontSize: AppLayout.getHeight(15),
+                                decoration: TextDecoration.underline),
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: AppLayout.getHeight(10),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 16.0),
+                padding:
+                EdgeInsets.symmetric(vertical: AppLayout.getHeight(16)),
                 child: Material(
                   color: Colors.grey.shade400,
-                  borderRadius: const BorderRadius.all(Radius.circular(10)),
-                  elevation: 5.0,
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(
+                      AppLayout.getHeight(10),
+                    ),
+                  ),
+                  elevation: AppLayout.getHeight(10),
                   child: MaterialButton(
                     onPressed: () {
                       //do something
                     },
-                    minWidth: 200.0,
-                    height: 42.0,
-                    child: const Text(
+                    minWidth: AppLayout.getWidth(200),
+                    height: AppLayout.getHeight(40),
+                    child: Text(
                       'SIGN UP',
-                      style:
-                          TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                          fontSize: AppLayout.getHeight(17),
+                          fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 15,
+              SizedBox(
+                height: AppLayout.getHeight(10),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text(
+                  Text(
                     'or  ',
-                    style: TextStyle(fontSize: 15),
+                    style: TextStyle(fontSize: AppLayout.getHeight(15)),
                   ),
                   InkWell(
                     onTap: () {
                       // redirect to Login Screen
                       Navigator.pushNamed(context, Login.id);
                     },
-                    child: const Text(
+                    child: Text(
                       'Login',
                       style: TextStyle(
-                          fontSize: 20, decoration: TextDecoration.underline),
+                          fontSize: AppLayout.getHeight(20),
+                          decoration: TextDecoration.underline),
                     ),
                   )
                 ],
               )
             ],
-          ),
+          )
         ),
       ),
     );

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:login_ui/screens/sign_up.dart';
 
+import '../utils/app_layout.dart';
+
 class Login extends StatelessWidget {
   const Login({Key? key}) : super(key: key);
 
@@ -12,14 +14,18 @@ class Login extends StatelessWidget {
       body: Center(
         child: Container(
           height: MediaQuery.of(context).size.height * 0.7,
-          margin: const EdgeInsets.symmetric(horizontal: 30),
+          width: MediaQuery.of(context).size.width * 0.3,
+          margin: EdgeInsets.symmetric(horizontal: AppLayout.getWidth(20)),
           decoration: BoxDecoration(
             color: Colors.grey.shade300,
-            borderRadius: const BorderRadius.all(
-              Radius.circular(20),
+            borderRadius: BorderRadius.all(
+              Radius.circular(AppLayout.getHeight(20)),
             ),
           ),
-          padding: const EdgeInsets.all(30),
+          padding: EdgeInsets.symmetric(
+            horizontal: AppLayout.getWidth(20),
+            vertical: AppLayout.getHeight(20),
+          ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -28,28 +34,35 @@ class Login extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   InkWell(
-                    onTap: (){
+                    onTap: () {
                       //redirect to signup screen
                       Navigator.pushNamed(context, SignUp.id);
                     },
-                    child: const Text(
+                    child: Text(
                       'Sign Up',
                       style: TextStyle(
-                        fontSize: 30,
+                        fontSize: AppLayout.getHeight(20),
                         fontWeight: FontWeight.bold,
                         color: Colors.transparent,
-                        shadows: [Shadow(offset: Offset(0, -15), color: Colors.black)],
-
+                        shadows: [
+                          Shadow(
+                              offset: Offset(0, AppLayout.getHeight(-15)),
+                              color: Colors.black)
+                        ],
                       ),
                     ),
                   ),
-                  const Text(
+                  Text(
                     'Login',
                     style: TextStyle(
-                      fontSize: 30,
+                      fontSize: AppLayout.getHeight(20),
                       fontWeight: FontWeight.bold,
                       color: Colors.transparent,
-                      shadows: [Shadow(offset: Offset(0, -15), color: Colors.black)],
+                      shadows: [
+                        Shadow(
+                            offset: Offset(0, AppLayout.getHeight(-15)),
+                            color: Colors.black)
+                      ],
                       decoration: TextDecoration.underline,
                       decorationThickness: 3,
                       decorationColor: Colors.black,
@@ -57,28 +70,31 @@ class Login extends StatelessWidget {
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 30,
+              SizedBox(
+                height: AppLayout.getHeight(10),
               ),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-                margin: const EdgeInsets.only(bottom: 3),
-                decoration: const BoxDecoration(
+                padding:
+                    EdgeInsets.symmetric(horizontal: AppLayout.getWidth(5)),
+                margin: EdgeInsets.only(bottom: AppLayout.getHeight(3)),
+                decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(10),
-                    topRight: Radius.circular(10),
+                    topLeft: Radius.circular(AppLayout.getHeight(10)),
+                    topRight: Radius.circular(AppLayout.getHeight(10)),
                   ),
                 ),
                 child: SizedBox(
                   width: MediaQuery.of(context).size.width * 0.8,
                   child: TextField(
                     keyboardType: TextInputType.emailAddress,
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
                       border: InputBorder.none,
                       hintText: 'Enter your email address',
                       labelText: 'Email',
-                      prefixIcon: Icon(Icons.email),
+                      hintStyle: TextStyle(fontSize: AppLayout.getHeight(10)),
+                      labelStyle: TextStyle(fontSize: AppLayout.getHeight(13)),
+                      prefixIcon: Icon(Icons.email, size: AppLayout.getHeight(20)),
                     ),
                     onChanged: (value) {
                       // Do something with the user input
@@ -87,23 +103,27 @@ class Login extends StatelessWidget {
                 ),
               ),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-                decoration: const BoxDecoration(
+                padding:
+                    EdgeInsets.symmetric(horizontal: AppLayout.getWidth(5)),
+                decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
-                    bottomRight: Radius.circular(10),
-                    bottomLeft: Radius.circular(10),
+                    bottomRight: Radius.circular(AppLayout.getHeight(10)),
+                    bottomLeft: Radius.circular(AppLayout.getWidth(10)),
                   ),
                 ),
                 child: SizedBox(
                   width: MediaQuery.of(context).size.width * 0.8,
                   child: TextField(
                     keyboardType: TextInputType.emailAddress,
-                    decoration: const InputDecoration(
+                    obscureText: true,
+                    decoration: InputDecoration(
                       border: InputBorder.none,
                       hintText: 'Enter your password',
                       labelText: 'Password',
-                      prefixIcon: Icon(Icons.lock),
+                      hintStyle: TextStyle(fontSize: AppLayout.getHeight(10)),
+                      labelStyle: TextStyle(fontSize: AppLayout.getHeight(13)),
+                      prefixIcon: Icon(Icons.lock, size: AppLayout.getHeight(20)),
                     ),
                     onChanged: (value) {
                       // Do something with the user input
@@ -111,8 +131,8 @@ class Login extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 15,
+              SizedBox(
+                height: AppLayout.getHeight(10),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -127,53 +147,71 @@ class Login extends StatelessWidget {
                           //do something
                         },
                       ),
-                      const Text('Remember Me')
+                      Text(
+                        'Remember Me',
+                        style: TextStyle(
+                          fontSize: AppLayout.getHeight(15),
+                        ),
+                      )
                     ],
                   ),
-                  const Text('Forgot Password?')
+                  Text(
+                    'Forgot Password?',
+                    style: TextStyle(
+                      fontSize: AppLayout.getHeight(15),
+                    ),
+                  )
                 ],
               ),
-              const SizedBox(
-                height: 15,
+              SizedBox(
+                height: AppLayout.getHeight(10),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 16.0),
+                padding:
+                EdgeInsets.symmetric(vertical: AppLayout.getHeight(16)),
                 child: Material(
                   color: Colors.grey.shade400,
-                  borderRadius: const BorderRadius.all(Radius.circular(10)),
-                  elevation: 5.0,
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(
+                      AppLayout.getHeight(10),
+                    ),
+                  ),
+                  elevation: AppLayout.getHeight(5),
                   child: MaterialButton(
                     onPressed: () {
                       //do something
                     },
-                    minWidth: 200.0,
-                    height: 42.0,
-                    child: const Text(
+                    minWidth: AppLayout.getWidth(200),
+                    height: AppLayout.getHeight(40),
+                    child: Text(
                       'LOGIN',
-                      style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                          fontSize: AppLayout.getHeight(17),
+                          fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 15,
+              SizedBox(
+                height: AppLayout.getHeight(10),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text(
+                  Text(
                     'or  ',
-                    style: TextStyle(fontSize: 15),
+                    style: TextStyle(fontSize: AppLayout.getHeight(15)),
                   ),
                   InkWell(
                     onTap: () {
                       // redirect to Sign Up Screen
                       Navigator.pushNamed(context, SignUp.id);
                     },
-                    child: const Text(
+                    child: Text(
                       'Sign Up',
                       style: TextStyle(
-                          fontSize: 20, decoration: TextDecoration.underline),
+                          fontSize: AppLayout.getHeight(20),
+                          decoration: TextDecoration.underline),
                     ),
                   )
                 ],
