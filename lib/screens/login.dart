@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:login_ui/screens/sign_up.dart';
-
-import '../utils/app_layout.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Login extends StatelessWidget {
   const Login({Key? key}) : super(key: key);
@@ -13,210 +12,210 @@ class Login extends StatelessWidget {
       backgroundColor: Colors.grey.shade700,
       body: Center(
         child: Container(
-          height: MediaQuery.of(context).size.height * 0.7,
+          height: MediaQuery.of(context).size.height * 0.6,
           width: MediaQuery.of(context).size.width * 0.3,
-          margin: EdgeInsets.symmetric(horizontal: AppLayout.getWidth(20)),
+          margin: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
           decoration: BoxDecoration(
             color: Colors.grey.shade300,
             borderRadius: BorderRadius.all(
-              Radius.circular(AppLayout.getHeight(20)),
+              Radius.circular(5.w),
             ),
           ),
           padding: EdgeInsets.symmetric(
-            horizontal: AppLayout.getWidth(20),
-            vertical: AppLayout.getHeight(20),
+            horizontal: 10.w,
+            vertical: 10.h,
           ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  InkWell(
-                    onTap: () {
-                      //redirect to signup screen
-                      Navigator.pushNamed(context, SignUp.id);
-                    },
-                    child: Text(
-                      'Sign Up',
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                SizedBox(
+                  height: 30.h,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    InkWell(
+                      onTap: () {
+                        //redirect to signup screen
+                        Navigator.pushNamed(context, SignUp.id);
+                      },
+                      child: Text(
+                        'Sign Up',
+                        style: TextStyle(
+                          fontSize: 20.sp,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.transparent,
+                          shadows: [
+                            Shadow(
+                                offset: Offset(0, -15.h), color: Colors.black)
+                          ],
+                        ),
+                      ),
+                    ),
+                    Text(
+                      'Login',
                       style: TextStyle(
-                        fontSize: AppLayout.getHeight(20),
+                        fontSize: 20.sp,
                         fontWeight: FontWeight.bold,
                         color: Colors.transparent,
                         shadows: [
-                          Shadow(
-                              offset: Offset(0, AppLayout.getHeight(-15)),
-                              color: Colors.black)
+                          Shadow(offset: Offset(0, -15.h), color: Colors.black)
                         ],
+                        decoration: TextDecoration.underline,
+                        decorationThickness: 3,
+                        decorationColor: Colors.black,
                       ),
                     ),
-                  ),
-                  Text(
-                    'Login',
-                    style: TextStyle(
-                      fontSize: AppLayout.getHeight(20),
-                      fontWeight: FontWeight.bold,
-                      color: Colors.transparent,
-                      shadows: [
-                        Shadow(
-                            offset: Offset(0, AppLayout.getHeight(-15)),
-                            color: Colors.black)
-                      ],
-                      decoration: TextDecoration.underline,
-                      decorationThickness: 3,
-                      decorationColor: Colors.black,
+                  ],
+                ),
+                SizedBox(
+                  height: 20.h,
+                ),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 5.w),
+                  margin: EdgeInsets.only(bottom: 3.h),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(5.w),
+                      topRight: Radius.circular(5.w),
                     ),
                   ),
-                ],
-              ),
-              SizedBox(
-                height: AppLayout.getHeight(10),
-              ),
-              Container(
-                padding:
-                    EdgeInsets.symmetric(horizontal: AppLayout.getWidth(5)),
-                margin: EdgeInsets.only(bottom: AppLayout.getHeight(3)),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(AppLayout.getHeight(10)),
-                    topRight: Radius.circular(AppLayout.getHeight(10)),
-                  ),
-                ),
-                child: SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.8,
-                  child: TextField(
-                    keyboardType: TextInputType.emailAddress,
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: 'Enter your email address',
-                      labelText: 'Email',
-                      hintStyle: TextStyle(fontSize: AppLayout.getHeight(10)),
-                      labelStyle: TextStyle(fontSize: AppLayout.getHeight(13)),
-                      prefixIcon: Icon(Icons.email, size: AppLayout.getHeight(20)),
-                    ),
-                    onChanged: (value) {
-                      // Do something with the user input
-                    },
-                  ),
-                ),
-              ),
-              Container(
-                padding:
-                    EdgeInsets.symmetric(horizontal: AppLayout.getWidth(5)),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                    bottomRight: Radius.circular(AppLayout.getHeight(10)),
-                    bottomLeft: Radius.circular(AppLayout.getWidth(10)),
-                  ),
-                ),
-                child: SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.8,
-                  child: TextField(
-                    keyboardType: TextInputType.emailAddress,
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: 'Enter your password',
-                      labelText: 'Password',
-                      hintStyle: TextStyle(fontSize: AppLayout.getHeight(10)),
-                      labelStyle: TextStyle(fontSize: AppLayout.getHeight(13)),
-                      prefixIcon: Icon(Icons.lock, size: AppLayout.getHeight(20)),
-                    ),
-                    onChanged: (value) {
-                      // Do something with the user input
-                    },
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: AppLayout.getHeight(10),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Checkbox(
-                        checkColor: Colors.black,
-                        value: false,
-                        shape: const CircleBorder(),
-                        onChanged: (bool? value) {
-                          //do something
-                        },
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.8,
+                    child: TextField(
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hintText: 'Enter your email address',
+                        labelText: 'Email',
+                        hintStyle: TextStyle(fontSize: 10.sp),
+                        labelStyle: TextStyle(fontSize: 13.sp),
+                        prefixIcon: Icon(Icons.email, size: 7.w),
                       ),
-                      Text(
-                        'Remember Me',
-                        style: TextStyle(
-                          fontSize: AppLayout.getHeight(15),
+                      onChanged: (value) {
+                        // Do something with the user input
+                      },
+                    ),
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 5.w),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                      bottomRight: Radius.circular(5.w),
+                      bottomLeft: Radius.circular(5.w),
+                    ),
+                  ),
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.8,
+                    child: TextField(
+                      keyboardType: TextInputType.emailAddress,
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hintText: 'Enter your password',
+                        labelText: 'Password',
+                        hintStyle: TextStyle(fontSize: 10.sp),
+                        labelStyle: TextStyle(fontSize: 13.sp),
+                        prefixIcon: Icon(Icons.lock, size: 7.w),
+                      ),
+                      onChanged: (value) {
+                        // Do something with the user input
+                      },
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 20.h,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Checkbox(
+                          checkColor: Colors.black,
+                          value: false,
+                          shape: const CircleBorder(),
+                          onChanged: (bool? value) {},
                         ),
-                      )
-                    ],
-                  ),
-                  Text(
-                    'Forgot Password?',
-                    style: TextStyle(
-                      fontSize: AppLayout.getHeight(15),
+                        Text(
+                          'Remember Me',
+                          style: TextStyle(
+                            fontSize: 12.sp,
+                          ),
+                        )
+                      ],
                     ),
-                  )
-                ],
-              ),
-              SizedBox(
-                height: AppLayout.getHeight(10),
-              ),
-              Padding(
-                padding:
-                EdgeInsets.symmetric(vertical: AppLayout.getHeight(16)),
-                child: Material(
-                  color: Colors.grey.shade400,
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(
-                      AppLayout.getHeight(10),
+
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 8.w),
+                      child: Text(
+                        'Forgot Password?',
+                        style: TextStyle(
+                          fontSize: 12.sp,
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+                SizedBox(
+                  height: 10.h,
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 16.h),
+                  child: Material(
+                    color: Colors.grey.shade400,
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(
+                        10.w,
+                      ),
                     ),
-                  ),
-                  elevation: AppLayout.getHeight(5),
-                  child: MaterialButton(
-                    onPressed: () {
-                      //do something
-                    },
-                    minWidth: AppLayout.getWidth(200),
-                    height: AppLayout.getHeight(40),
-                    child: Text(
-                      'LOGIN',
-                      style: TextStyle(
-                          fontSize: AppLayout.getHeight(17),
-                          fontWeight: FontWeight.bold),
+                    elevation: 10.h,
+                    child: MaterialButton(
+                      onPressed: () {
+                        //do something
+                      },
+                      minWidth: 200.w,
+                      height: 40.h,
+                      child: Text(
+                        'LOGIN',
+                        style: TextStyle(
+                            fontSize: 17.sp, fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: AppLayout.getHeight(10),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'or  ',
-                    style: TextStyle(fontSize: AppLayout.getHeight(15)),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      // redirect to Sign Up Screen
-                      Navigator.pushNamed(context, SignUp.id);
-                    },
-                    child: Text(
-                      'Sign Up',
-                      style: TextStyle(
-                          fontSize: AppLayout.getHeight(20),
-                          decoration: TextDecoration.underline),
+                SizedBox(
+                  height: 10.h,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'or  ',
+                      style: TextStyle(fontSize: 15.sp),
                     ),
-                  )
-                ],
-              )
-            ],
+                    InkWell(
+                      onTap: () {
+                        // redirect to Sign Up Screen
+                        Navigator.pushNamed(context, SignUp.id);
+                      },
+                      child: Text(
+                        'Sign Up',
+                        style: TextStyle(
+                            fontSize: 20.sp,
+                            decoration: TextDecoration.underline),
+                      ),
+                    )
+                  ],
+                )
+              ],
+            ),
           ),
         ),
       ),
