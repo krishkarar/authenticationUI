@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
           initialRoute: SignUp.id,
           routes: {
             SignUp.id : (context)=> const SignUp(),
-            Login.id : (context)=> const Login()
+            Login.id : (context)=> Login()
           },
         );
 

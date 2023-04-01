@@ -10,12 +10,25 @@ class SignUp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double cardWidth;
+
+    if(screenWidth < 700){
+      cardWidth = screenWidth*0.8;
+    }
+    else if (screenWidth >= 700 && screenWidth<750) {
+      cardWidth = screenWidth*0.7;
+    } else if (screenWidth >= 750 && screenWidth < 900) {
+      cardWidth = screenWidth*0.6;
+    } else {
+      cardWidth = screenWidth * 0.3;
+    }
     return Scaffold(
       backgroundColor: Colors.grey.shade700,
       body: Center(
         child: Container(
             height: MediaQuery.of(context).size.height * 0.9,
-            width: MediaQuery.of(context).size.width * 0.3,
+            width: cardWidth,
             margin: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
             decoration: BoxDecoration(
               color: Colors.grey.shade300,
@@ -93,9 +106,7 @@ class SignUp extends StatelessWidget {
                         decoration: InputDecoration(
                           border: InputBorder.none,
                           hintText: 'Enter your first name',
-                          labelText: 'First name',
-                          hintStyle: TextStyle(fontSize: 10.sp),
-                          labelStyle: TextStyle(fontSize: 13.sp),
+                          hintStyle: TextStyle(fontSize: 13.sp),
                           prefixIcon: Icon(
                             Icons.person,
                             size: 7.w,
@@ -120,9 +131,7 @@ class SignUp extends StatelessWidget {
                         decoration: InputDecoration(
                           border: InputBorder.none,
                           hintText: 'Enter your last name',
-                          labelText: 'Last Name',
-                          hintStyle: TextStyle(fontSize: 10.sp),
-                          labelStyle: TextStyle(fontSize: 13.sp),
+                          hintStyle: TextStyle(fontSize: 13.sp),
                           prefixIcon: Icon(
                             Icons.person,
                             size: 7.w,
@@ -147,9 +156,7 @@ class SignUp extends StatelessWidget {
                         decoration: InputDecoration(
                           border: InputBorder.none,
                           hintText: 'Enter your email',
-                          labelText: 'Email',
-                          hintStyle: TextStyle(fontSize: 10.sp),
-                          labelStyle: TextStyle(fontSize: 13.sp),
+                          hintStyle: TextStyle(fontSize: 13.sp),
                           prefixIcon: Icon(
                             Icons.mail,
                             size: 7.w,
@@ -174,9 +181,7 @@ class SignUp extends StatelessWidget {
                         decoration: InputDecoration(
                           border: InputBorder.none,
                           hintText: 'Enter your mobile number',
-                          labelText: 'Mobile Number',
-                          hintStyle: TextStyle(fontSize: 10.sp),
-                          labelStyle: TextStyle(fontSize: 13.sp),
+                          hintStyle: TextStyle(fontSize: 13.sp),
                           prefixIcon: Icon(
                             Icons.phone_android,
                             size: 7.w,
@@ -202,9 +207,7 @@ class SignUp extends StatelessWidget {
                         decoration: InputDecoration(
                           border: InputBorder.none,
                           hintText: 'Enter your password',
-                          labelText: 'Password',
-                          hintStyle: TextStyle(fontSize: 10.sp),
-                          labelStyle: TextStyle(fontSize: 13.sp),
+                          hintStyle: TextStyle(fontSize: 13.sp),
                           prefixIcon: Icon(
                             Icons.lock,
                             size: 7.w,
@@ -233,9 +236,7 @@ class SignUp extends StatelessWidget {
                         decoration: InputDecoration(
                           border: InputBorder.none,
                           hintText: 'Confirm your password',
-                          labelText: 'Confirm Password',
-                          hintStyle: TextStyle(fontSize: 10.sp),
-                          labelStyle: TextStyle(fontSize: 13.sp),
+                          hintStyle: TextStyle(fontSize: 13.sp),
                           prefixIcon: Icon(
                             Icons.lock,
                             size: 7.w,

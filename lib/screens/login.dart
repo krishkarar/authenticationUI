@@ -3,17 +3,35 @@ import 'package:login_ui/screens/sign_up.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Login extends StatelessWidget {
-  const Login({Key? key}) : super(key: key);
+  Login({Key? key}) : super(key: key);
 
   static String id = 'login_screen';
+  final ScrollController _scrollController = ScrollController();
+
+
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double cardWidth;
+
+    if(screenWidth < 700){
+      cardWidth = screenWidth*0.8;
+    }
+    else if (screenWidth >= 700 && screenWidth<750) {
+      cardWidth = screenWidth*0.7;
+    } else if (screenWidth >= 750 && screenWidth < 900) {
+      cardWidth = screenWidth*0.6;
+    } else {
+      cardWidth = screenWidth*0.3;
+    }
+
+
     return Scaffold(
       backgroundColor: Colors.grey.shade700,
       body: Center(
         child: Container(
           height: MediaQuery.of(context).size.height * 0.6,
-          width: MediaQuery.of(context).size.width * 0.3,
+          width: cardWidth,
           margin: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
           decoration: BoxDecoration(
             color: Colors.grey.shade300,
@@ -90,9 +108,7 @@ class Login extends StatelessWidget {
                       decoration: InputDecoration(
                         border: InputBorder.none,
                         hintText: 'Enter your email address',
-                        labelText: 'Email',
-                        hintStyle: TextStyle(fontSize: 10.sp),
-                        labelStyle: TextStyle(fontSize: 13.sp),
+                        hintStyle: TextStyle(fontSize: 13.sp),
                         prefixIcon: Icon(Icons.email, size: 7.w),
                       ),
                       onChanged: (value) {
@@ -113,14 +129,12 @@ class Login extends StatelessWidget {
                   child: SizedBox(
                     width: MediaQuery.of(context).size.width * 0.8,
                     child: TextField(
-                      keyboardType: TextInputType.emailAddress,
+                      // keyboardType: TextInputType.emailAddress,
                       obscureText: true,
                       decoration: InputDecoration(
                         border: InputBorder.none,
                         hintText: 'Enter your password',
-                        labelText: 'Password',
-                        hintStyle: TextStyle(fontSize: 10.sp),
-                        labelStyle: TextStyle(fontSize: 13.sp),
+                        hintStyle: TextStyle(fontSize: 13.sp),
                         prefixIcon: Icon(Icons.lock, size: 7.w),
                       ),
                       onChanged: (value) {
@@ -132,8 +146,9 @@ class Login extends StatelessWidget {
                 SizedBox(
                   height: 20.h,
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                Row(
+                  // crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
                       children: [
@@ -152,13 +167,10 @@ class Login extends StatelessWidget {
                       ],
                     ),
 
-                    Container(
-                      padding: EdgeInsets.symmetric(horizontal: 8.w),
-                      child: Text(
-                        'Forgot Password?',
-                        style: TextStyle(
-                          fontSize: 12.sp,
-                        ),
+                    Text(
+                      'Forgot Password?',
+                      style: TextStyle(
+                        fontSize: 12.sp,
                       ),
                     )
                   ],
@@ -216,6 +228,7 @@ class Login extends StatelessWidget {
                 )
               ],
             ),
+
           ),
         ),
       ),
