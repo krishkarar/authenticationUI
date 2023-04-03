@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:login_ui/screens/login.dart';
+import 'package:login_ui/screens/login_final.dart';
 import 'package:login_ui/screens/sign_up.dart';
+import 'package:login_ui/screens/sign_up_final.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,10 +26,12 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             primarySwatch: Colors.blue,
           ),
-          initialRoute: SignUp.id,
+          initialRoute: SignUpFinal.id,
           routes: {
             SignUp.id : (context)=> const SignUp(),
-            Login.id : (context)=> Login()
+            Login.id : (context)=> Login(),
+            SignUpFinal.id : (context) => SignUpFinal(),
+            LoginFinal.id : (context) => LoginFinal()
           },
         );
 

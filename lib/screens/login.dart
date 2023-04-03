@@ -6,7 +6,6 @@ class Login extends StatelessWidget {
   Login({Key? key}) : super(key: key);
 
   static String id = 'login_screen';
-  final ScrollController _scrollController = ScrollController();
 
 
   @override
